@@ -1,0 +1,56 @@
+<div *ngIf="!showResults">
+    <div class="question">
+        <h2>Задание {{currentQuestion+1}}</h2>
+        <br />
+        <p>{{questions[currentQuestion].question}}</p>
+    </div>
+    <div class="answers">
+        <a class="answer" *ngFor="let answer of questions[currentQuestion].answers; let i = index"
+            (click)="onAnswered(i)">
+            <div>{{answer}}</div>
+        </a>
+    </div>
+</div>
+
+<div *ngIf="showResults" class="results">
+    <h2>Результат</h2>
+    <h3>Верный ответ дан на {{rightAnswersCount}} вопросов из {{questions.length-1}}.</h3>
+    <div *ngFor="let question of questions; let i = index">
+        <div *ngIf="i <= questions.length-2" class="resultsQuestion" [class.right]="participantAnswers[i]==question.key"
+            [class.wrong]="participantAnswers[i]!=question.key">
+            <div>
+                <p>{{question.question}}</p>
+            </div>
+            <div class="resultAnswers">
+                <div *ngFor="let answer of question.answers; let answerIndex = index"
+                    [class.highlightedAnswer]="answerIndex == question.key || answerIndex == participantAnswers[i]"
+                    class="resultAnswer">
+
+                    <img *ngIf="answerIndex == question.key" src="/assets/ok.png" alt="ok" class="answerIconStyle"
+                        title="Right answer">
+                    <img *ngIf="answerIndex != question.key && answerIndex == participantAnswers[i]"
+                        src="/assets/cancel.png" alt="ok" class="answerIconStyle" title="Your answer">
+                    <p [class.bigPadding]="answerIndex != question.key && answerIndex != participantAnswers[i]">
+                        {{answer}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <p style="bottom: 0; margin-top: 10em;">Вопросы взяты из открытых источников:
+        <br />
+        https://ustaliy.ru/snax_quiz/test-naskolko-horosho-vyi-znaete-russkiy-yazyik-otvette-na-15-voprosov-bez-podskazok/
+        <br />
+        https://ustaliy.ru/testi/testi-uma/testyi-po-naukam/testyi-po-fizike/
+        <br />
+        https://www.adme.ru/zhizn-nauka/smozhete-li-vy-otvetit-na-voprosy-po-fizike-dlya-shkolnikov-1885915/
+        <br />
+        https://dropi.ru/posts/test-po-fizike-chto-vy-pomnite-iz-shkolnoj-programmy
+        <br />
+        https://zen.yandex.ru/media/id/59fcbbe28c8be341769b3f29/test-5-prostyh-shkolnyh-voprosov-po-fizike-proveriaem-uroven-intellekta-i-smekalku-5ff01bcaf906b16872cd4032
+        <br />
+        https://liketest.ru/fizika/test-s-otvetami-na-temu-optika.html
+    </p>
+</div>

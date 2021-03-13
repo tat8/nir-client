@@ -1,0 +1,7 @@
+<toaster-container [toasterconfig]="config"></toaster-container>
+
+<app-calibration *ngIf="isCalibration" [circlePosition]="calibrationCirclePosition" (onCalibrate)="calibrate()">
+</app-calibration>
+<app-task *ngIf="!isCalibration" [experimentId]="experimentId" [experimentNumber]="experimentNumber" [baseAPI]="baseAPI"
+  (onTaskFinished)="onTaskFinished()">
+</app-task>

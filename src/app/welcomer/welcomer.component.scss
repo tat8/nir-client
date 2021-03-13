@@ -1,0 +1,24 @@
+.welcomeForm{
+    text-align: center;
+    margin: 0 40%;
+}
+
+.welcomeForm p{
+    display: grid;
+}
+
+.welcomeForm p label, .welcomeForm h4{
+    text-align: left;
+}
+
+.formContainer{
+    background-color: #EFD7C8;
+    padding: 0.3em 0 2em;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin: 2em 0;
+}
+
+.welcomeMessage{
+    padding: 0 2em;
+    font-size: larger;
+}

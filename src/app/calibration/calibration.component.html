@@ -1,0 +1,7 @@
+<ngContainer [ngSwitch]="circlePosition">
+    <img *ngSwitchCase="'center'" src="/assets/circle.png" alt="image" [style]="centerStyle" (click)="onCircleClick()">
+    <img *ngSwitchCase="'top'" src="/assets/circle.png" alt="image" [style]="topStyle" (click)="onCircleClick()">
+    <img *ngSwitchCase="'right'" src="/assets/circle.png" alt="image" [style]="rightStyle" (click)="onCircleClick()">
+    <img *ngSwitchCase="'bottom'" src="/assets/circle.png" alt="image" [style]="bottomStyle" (click)="onCircleClick()">
+    <img *ngSwitchCase="'left'" src="/assets/circle.png" alt="image" [style]="leftStyle" (click)="onCircleClick()">
+</ngContainer>

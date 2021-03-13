@@ -1,0 +1,25 @@
+@import 'node_modules/angular2-toaster/toaster';
+
+html, body{
+    padding: 0;
+    margin: 0;
+    background: #F5F5F5;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+button{
+    background: #f5f5f5;
+    border: 1px solid #DCDCDC;
+    box-shadow: none;
+    padding: 10px 16px;
+}
+
+button:not([disabled]){
+    cursor: pointer;
+}
+
+button:not([disabled]):hover{
+    background: #C7BDBD;
+    border: 1px solid #C7BDBD;
+}

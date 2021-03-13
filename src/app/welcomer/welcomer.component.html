@@ -1,0 +1,53 @@
+<div>
+    <div class="welcomeMessage">
+        <h1>Эксперимент</h1>
+        <p>Спасибо, что согласились участвовать. И так далее... (описание, что предстоит)</p>
+        <br />
+        <br />
+        <p>Пожалуйста, введите свои данные и выберите номер эксперимента.</p>
+    </div>
+    
+    <div class="formContainer">
+        <div class="welcomeForm">
+            <h4>Анкета</h4>
+            <p>
+                <label>Возраст</label>
+                <span>
+                    <input type="number" [(ngModel)]="participantAge">
+                </span>               
+            </p>
+
+            <p>
+                <label>Пол</label>
+                <span>
+                    <input type="radio" value="male" name="gender" [(ngModel)]="participantGender">
+                    Мужской
+                </span>
+                <span>
+                    <input type="radio" value="female" name="gender" [(ngModel)]="participantGender">
+                    Женский
+                </span>
+            </p>
+
+            <p>
+                <label>Номер эксперимента</label>
+                <span>
+                    <input type="radio" value="1" name="experiment" [(ngModel)]="experimentNumber" checked>
+                    1
+                </span>
+
+                <span>
+                    <input type="radio" value="2" name="experiment" [(ngModel)]="experimentNumber">
+                    2
+                </span>
+            </p>
+
+            <button type="submit"
+                [disabled]="participantAge == null || participantAge < 0 || participantGender == null || experimentNumber < 1 || experimentNumber > 2"
+                (click)="onSubmit()">
+                Начать эксперимент
+            </button>            
+        </div>
+
+    </div>
+</div>
