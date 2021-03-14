@@ -95,6 +95,7 @@ export class VideoSaverComponent {
   private getPupilPosition() {
     if (this.recorder == null) {
       this.initCamera();
+      console.log("Error stopping the video")
       return;
     }
 
