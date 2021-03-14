@@ -63,7 +63,7 @@ export class VideoSaverComponent {
   }
 
   private initCamera() {
-    try{
+    try {
       var browser = <any>navigator;
       this.recordedChunks = [];
       // todo: set video width and height
@@ -72,11 +72,11 @@ export class VideoSaverComponent {
         this.recorder = new RecordRTC(stream, {
           type: 'video'
         });
-  
+
         this.recorder.startRecording();
       });
     }
-    catch{
+    catch {
       this.toasterService.pop('error', "Ошибка", "Не удалось подключиться к камере.");
     }
   }
@@ -93,6 +93,11 @@ export class VideoSaverComponent {
   }
 
   private getPupilPosition() {
+    if (this.recorder == null) {
+      this.initCamera();
+      return;
+    }
+
     this.recorder.stopRecording((x: any) => {
       this.recorder.getDataURL((x: any) => {
 
@@ -135,12 +140,12 @@ export class VideoSaverComponent {
 
           this.cdRef.detectChanges();
 
-          try{
+          try {
             this.recordedChunks.forEach((stream: any) => {
               stream.getTracks().forEach((track: any) => track.stop())
             });
           }
-          catch{
+          catch {
             this.toasterService.pop('error', "Ошибка", "Не удалось подлючиться к камере.");
           }
 
