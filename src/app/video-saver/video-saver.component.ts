@@ -34,6 +34,7 @@ export class VideoSaverComponent {
   private videoWidth = 1280;
   private videoHeight = 720;
   private errorOnPrevStep: boolean = false;
+  private isFirstError: boolean = true;
 
   private toasterService: ToasterService;
   constructor(private httpClient: HttpClient, private cdRef: ChangeDetectorRef,
@@ -113,6 +114,7 @@ export class VideoSaverComponent {
 
           console.log(data);
           if ((<any>data).isSuccess) {
+            this.isFirstError = true;
             if (this.errorOnPrevStep) {
               this.calibrationStep = 0;
               this.configureCirclePosition();
@@ -133,10 +135,14 @@ export class VideoSaverComponent {
             this.message = "";
           }
           else {
+            if (this.isFirstError) {
+              this.toasterService.pop('error', "Ошибка", "Зрачки не были обнаружены. Попробуйте сделать камеру ближе или измените освещение.");
+              this.errorOnPrevStep = true;
+            }
+
+            this.isFirstError = false;
             this.message = (<any>data).message;
-            this.toasterService.pop('error', "Ошибка", "Зрачки не были обнаружены. Попробуйте сделать камеру ближе или измените освещение.");
             console.log(this.message);
-            this.errorOnPrevStep = true;
           }
 
           this.cdRef.detectChanges();
@@ -153,9 +159,13 @@ export class VideoSaverComponent {
           this.initCamera();
         },
           error => {
-            this.message = "Error";
-            this.toasterService.pop('error', "Ошибка");
-            this.errorOnPrevStep = true;
+            if (this.isFirstError) {
+              this.message = "Error";
+              this.toasterService.pop('error', "Ошибка");
+              this.errorOnPrevStep = true;
+            }
+
+            this.isFirstError = false;
             this.cdRef.detectChanges();
 
             this.recordedChunks.forEach((stream: any) => {
@@ -169,7 +179,14 @@ export class VideoSaverComponent {
   }
 
   private finishCalibration() {
-    this.httpClient.post(`${this.baseAPI}/finish`, { 'index': this.calibrationIndex }).subscribe(data => {
+    this.httpClient.post(
+      `${this.baseAPI}/finish`,
+      {
+        'index': this.calibrationIndex,
+        'coordinates': this.calibrationCoordinates,
+        'expId': this.experimentId
+      }
+    ).subscribe(data => {
       this.calibrationIndex = -1;
       this.calibrationStep = 0;
       this.errorOnPrevStep = false;
