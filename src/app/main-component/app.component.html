@@ -1,10 +1,11 @@
 <toaster-container [toasterconfig]="config"></toaster-container>
 
-<div class="loadingClass" *ngIf="loading">
-  <p>Загрузка ...</p>
-</div>
-
 <div class="mainContainer">
+
+  <div class="loadingClass" *ngIf="loading">
+    <p>Загрузка ...</p>
+  </div>
+
   <app-welcomer *ngIf="!startTest" (onStart)="onStartExperiment($event)"></app-welcomer>
 </div>
 <div>
