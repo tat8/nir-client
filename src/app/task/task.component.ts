@@ -260,6 +260,7 @@ export class TaskComponent {
   }
 
   private setRightCount() {
+    this.rightAnswersCount = 0;
     this.participantAnswers.forEach((answer, index) => {
       if (answer == this.questions[index].key) {
         this.rightAnswersCount += 1;

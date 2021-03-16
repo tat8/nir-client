@@ -28,6 +28,8 @@ export class AppComponent {
   public experimentNumber: any = "1";
   public experimentId: any = -1;
 
+  public loading: boolean = false;
+
   private toasterService: ToasterService;
   constructor(private httpClient: HttpClient, toasterService: ToasterService) {
     this.toasterService = toasterService;
@@ -41,6 +43,8 @@ export class AppComponent {
       return;
     }
 
+    this.loading = true;
+
     this.participantAge = event.participantAge;
     this.participantGender = event.participantGender;
     this.experimentNumber = event.experimentNumber;
@@ -49,9 +53,11 @@ export class AppComponent {
       data => {
         this.experimentId = (<any>data).expId;
         this.startTest = true;
+        this.loading = false;
       },
       error => {
         this.experimentId = -1;
+        this.loading = false;
         this.toasterService.pop('error', 'Ошибка', 'Во время выполнения запроса произошла неожиданная ошибка.');
       }
     );
