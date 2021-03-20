@@ -121,7 +121,7 @@ export class VideoSaverComponent {
               this.calibrationCoordinates = [];
             }
             else {
-              this.calibrationCoordinates.push([(<any>data).data.left_pupil_x, (<any>data).data.left_pupil_y]);
+              this.calibrationCoordinates.push((<any>data).data);
               this.calibrationStep += 1;
               if (this.calibrationStep == 10) {
                 this.finishCalibration();
