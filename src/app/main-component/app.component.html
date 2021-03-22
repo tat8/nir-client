@@ -7,6 +7,8 @@
   </div>
 
   <app-welcomer *ngIf="!startTest" (onStart)="onStartExperiment($event)"></app-welcomer>
+
+  <app-task-new></app-task-new>
 </div>
 <div>
   <app-video-saver *ngIf="startTest" [experimentId]="experimentId" [experimentNumber]="experimentNumber"

@@ -13,6 +13,7 @@ import { VideoSaverComponent } from './video-saver/video-saver.component';
 import { WelcomerComponent } from './welcomer/welcomer.component';
 import { CalibrationComponent } from './calibration/calibration.component';
 import { TaskComponent } from './task/task.component';
+import { TaskNewComponent } from './task-new/task-new.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TaskComponent } from './task/task.component';
     VideoSaverComponent,
     WelcomerComponent,
     CalibrationComponent,
-    TaskComponent
+    TaskComponent,
+    TaskNewComponent
   ],
   imports: [
     BrowserModule,
