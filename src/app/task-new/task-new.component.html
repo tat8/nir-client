@@ -1,5 +1,5 @@
 <div class="compiler-widget">
-    <div class="sec-widget" data-widget="a9bb8e030b1b205accaaecda6c85174e"></div>
+    <div class="sec-widget" data-id="example-widget" data-widget="a9bb8e030b1b205accaaecda6c85174e"></div>
     <script>
         SEC.ready(function() {
             var afterSendSubmission = function(data) {
@@ -9,7 +9,22 @@
             var SECWidget = SEC.widget("example-widget");
             SECWidget.events.subscribe('afterSendSubmission', afterSendSubmission);
         });
+
+        SEC.ready(function() {
+        var checkStatus = function(data) {
+            $('#result2').html('')
+                .append("> submissionId: " + data.submissionId + "<br>")
+                .append("> statusNumber: " + data.statusNumber + "<br>")
+                .append("> statusDescription: " + data.statusDescription + "<br>")
+                .append("> submissionMemory: " + data.submissionMemory + "<br>")
+                .append("> submissionTime: " + data.submissionTime + "<br>");
+        };
+        var SECWidget = SEC.widget("example-widget");
+        SECWidget.events.subscribe('checkStatus', checkStatus);
+    });
     </script>
     <input id="result" [(ngModel)]="resultText"/>
-    {{resultText}}
+    /{{resultText}}/
+    <input id="result2" [(ngModel)]="resultText2"/>
+    /{{resultText2}}/
 </div>

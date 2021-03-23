@@ -9,6 +9,7 @@ import { Component, Output, EventEmitter, ViewEncapsulation } from '@angular/cor
 export class TaskNewComponent {
 
   public resultText: string = "";
+  public resultText2: string = "";
   constructor() {
   }
 
