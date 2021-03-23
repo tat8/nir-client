@@ -6,7 +6,7 @@
     <p>Загрузка ...</p>
   </div>
 
-  <app-welcomer *ngIf="!startTest" (onStart)="onStartExperiment($event)"></app-welcomer>
+  <app-welcomer *ngIf="startTest" (onStart)="onStartExperiment($event)"></app-welcomer>
 
   <app-task-new></app-task-new>
 </div>
