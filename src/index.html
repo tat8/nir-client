@@ -21,16 +21,6 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, "script", "sphere-engine-compilers-jssdk"));
   </script>
-  <script>
-    SEC.ready(function () {
-      var afterSendSubmission = function (data) {
-        $('#result').html('')
-          .append("> submissionId: " + data.submissionId + "<br><br>");
-      };
-      var SECWidget = SEC.widget("example-widget");
-      SECWidget.events.subscribe('afterSendSubmission', afterSendSubmission);
-    });
-  </script>
   <app-root></app-root>
 </body>
 

@@ -1,7 +1,20 @@
 <div class="compiler-widget">
     <div class="sec-widget" data-id="example-widget" data-widget="a9bb8e030b1b205accaaecda6c85174e"></div>
-   
+    <script>
+        SEC.ready(function () {
+            var afterSendSubmission = function (data) {
+                $('#result').html('')
+                    .append("> submissionId: " + data.submissionId + "<br><br>");
+            };
+            var SECWidget = SEC.widget("example-widget");
+            SECWidget.events.subscribe('afterSendSubmission', afterSendSubmission);
+        });
+
+        $('#result555').html('')
+                    .append("> test: <br><br>");  
+    </script>
     <pre id="result" style="height: 300px;">Submit submission to see the result</pre>
+    <pre id="result555" style="height: 300px;">Test</pre>
     <input id="result22" [(ngModel)]="resultText" />
     /{{resultText}}/
     <input id="result2" [(ngModel)]="resultText2" />
