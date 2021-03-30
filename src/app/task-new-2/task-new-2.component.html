@@ -1,0 +1,47 @@
+<div class="wrapper">
+    <div class="task">
+        <p>Программе на вход подаются два числа <i>a</i> и <i>b</i>.
+            <br />
+            <br />
+            <br />
+            Зная эти значения, программа должна вычислить значение x по формуле:
+            <br />
+            <br />
+            <br />
+            <ng-katex equation="\\a^2*(5ab-\frac{b+5}{b})"></ng-katex>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            Все числа считаются действительными.
+            <br />
+            <br />
+            <br />
+            В результате работы вируса несколько строк программы поменялись местами.
+            <br />
+            <br />
+            <br />
+            Укажите такие строк, которые необходимо поменять местами, чтобы программа работала правильно.
+        </p>
+    </div>
+
+    <div class="app-ace-editor" #editor></div>
+
+    <div class="answer">
+        <label>Введите ответ</label>
+        <input type="text">
+
+        <button>Отправить</button>
+
+        <label style="font-size: small;">Формат ответа:
+            <ng-katex equation="k_0, l_0"></ng-katex>;...;<ng-katex equation="k_i, l_i"></ng-katex>,
+            где 
+            <ng-katex equation="k"></ng-katex> &ndash; номер первой строки пары,
+            <ng-katex equation="l"></ng-katex> &ndash; номер второй строки пары,
+            <ng-katex equation="i"></ng-katex> &ndash; количество пар.
+        </label>
+        <label style="font-size: small;">Пример ответа: 1, 2; 3, 4 </label>
+    </div>
+</div>

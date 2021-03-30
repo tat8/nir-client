@@ -5,6 +5,7 @@ import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToasterModule } from 'angular2-toaster';
+import { KatexModule } from 'ng-katex';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './main-component/app.component';
@@ -14,6 +15,7 @@ import { WelcomerComponent } from './welcomer/welcomer.component';
 import { CalibrationComponent } from './calibration/calibration.component';
 import { TaskComponent } from './task/task.component';
 import { TaskNewComponent } from './task-new/task-new.component';
+import { TaskNew2Component } from './task-new-2/task-new-2.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { TaskNewComponent } from './task-new/task-new.component';
     WelcomerComponent,
     CalibrationComponent,
     TaskComponent,
-    TaskNewComponent
+    TaskNewComponent,
+    TaskNew2Component
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { TaskNewComponent } from './task-new/task-new.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToasterModule.forRoot()
+    ToasterModule.forRoot(),
+    KatexModule
   ],
   providers: [],
   bootstrap: [AppComponent]
