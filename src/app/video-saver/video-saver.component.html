@@ -2,6 +2,5 @@
 
 <app-calibration *ngIf="isCalibration" [circlePosition]="calibrationCirclePosition" (onCalibrate)="calibrate()">
 </app-calibration>
-<app-task *ngIf="!isCalibration" [experimentId]="experimentId" [experimentNumber]="experimentNumber" [baseAPI]="baseAPI"
-  (onTaskFinished)="onTaskFinished()">
-</app-task>
+<app-task-new-2 *ngIf="!isCalibration" [experimentId]="experimentId" [baseAPI]="baseAPI"
+  (onTaskFinished)="onTaskFinished()"></app-task-new-2>

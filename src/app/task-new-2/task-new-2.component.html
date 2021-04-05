@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div *ngIf="showTasks" class="wrapper">
     <div class="task">
         <p>Программе на вход подаются два числа <i>a</i> и <i>b</i>.
             <br />
@@ -8,7 +8,9 @@
             <br />
             <br />
             <br />
-            <ng-katex equation="\\a^2*(5ab-\frac{b+5}{b})"></ng-katex>
+            <ng-katex *ngIf="showTask1" equation="\\a^2*(5ab-\frac{b+5}{b})"></ng-katex>
+            <ng-katex *ngIf="showTask2" equation="\\10a-\frac{5b^2+a}{ab}"></ng-katex>
+            <ng-katex *ngIf="showTask3" equation="\\5b^2*(ab-\frac{b+5}{15a})"></ng-katex>
             <br />
             <br />
             <br />
@@ -31,17 +33,39 @@
 
     <div class="answer">
         <label>Введите ответ</label>
-        <input type="text">
+        <input *ngIf="firstTask" type="text" [(ngModel)]="participantAnswerFirst">
+        <input *ngIf="secondTask" type="text" [(ngModel)]="participantAnswerSecond">
 
-        <button>Отправить</button>
-
+        <button (click)="onSendAnswerClick()"
+            [disabled]="firstTask && !participantAnswerFirst || secondTask && !participantAnswerSecond">
+            Отправить
+        </button>
+        
         <label style="font-size: small;">Формат ответа:
             <ng-katex equation="k_0, l_0"></ng-katex>;...;<ng-katex equation="k_i, l_i"></ng-katex>,
-            где 
+            где
             <ng-katex equation="k"></ng-katex> &ndash; номер первой строки пары,
             <ng-katex equation="l"></ng-katex> &ndash; номер второй строки пары,
             <ng-katex equation="i"></ng-katex> &ndash; количество пар.
         </label>
         <label style="font-size: small;">Пример ответа: 1, 2; 3, 4 </label>
     </div>
+</div>
+
+<div *ngIf="!showTasks" class="wrapper2">
+    <h2>Финальный опрос</h2>
+    <p>На сколько сложными для Вас были задания по шкале от 1 до 5, где 1 &ndash; очень легкие, 5 &ndash; очень сложные?</p>
+
+    <div>
+        <input type="radio" name="survey" value="1" [(ngModel)]="surveyAnswer">1
+        <input type="radio" name="survey" value="2" [(ngModel)]="surveyAnswer">2
+        <input type="radio" name="survey" value="3" [(ngModel)]="surveyAnswer">3
+        <input type="radio" name="survey" value="4" [(ngModel)]="surveyAnswer">4
+        <input type="radio" name="survey" value="5" [(ngModel)]="surveyAnswer">5    
+    </div>
+    
+    <div>
+        <button (click)="onSendSurveyClick()" [disabled]="!surveyAnswer">Отправить</button>
+    </div>
+    
 </div>
