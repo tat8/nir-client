@@ -36,8 +36,7 @@
         <input *ngIf="firstTask" type="text" [(ngModel)]="participantAnswerFirst">
         <input *ngIf="secondTask" type="text" [(ngModel)]="participantAnswerSecond">
 
-        <button (click)="onSendAnswerClick()"
-            [disabled]="firstTask && !participantAnswerFirst || secondTask && !participantAnswerSecond">
+        <button (click)="onSendAnswerClick()">
             Отправить
         </button>
         
@@ -65,7 +64,7 @@
     </div>
     
     <div>
-        <button (click)="onSendSurveyClick()" [disabled]="!surveyAnswer">Отправить</button>
+        <button (click)="onSendSurveyClick()">Отправить</button>
     </div>
     
 </div>
