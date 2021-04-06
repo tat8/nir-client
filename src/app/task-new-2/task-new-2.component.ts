@@ -264,7 +264,7 @@ export class TaskNew2Component {
                 '   p3 = 0; \r\n' +
                 '   p3 = p3 / (15 * a); \r\n' +
                 '   p3 = p3 + b + 5; \r\n' +
-                '   p2 = p2 + p3; \r\n' +
+                '   p2 = p2 - p3; \r\n' +
                 '   p1 = p1 * p2; \r\n' +
                 '   x = p1; \r\n' +
                 ' \r\n' +
