@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewEncapsulation, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as ace from "ace-builds";
 import { ToasterService } from 'angular2-toaster';
@@ -34,7 +34,7 @@ export class TaskNew2Component {
 
     @ViewChild("editor") private editor: ElementRef<HTMLElement> | undefined;
 
-    constructor(private httpClient: HttpClient, private toasterService: ToasterService) {
+    constructor(private httpClient: HttpClient, private toasterService: ToasterService, private cdRef: ChangeDetectorRef) {
     }
 
     ngOnInit() {
@@ -76,6 +76,7 @@ export class TaskNew2Component {
         if (this.secondTask) {
             this.showTasks = false;
             this.onTaskFinished.emit();
+            this.cdRef.detectChanges();
             return;
         }
 
@@ -95,7 +96,8 @@ export class TaskNew2Component {
 
 
         this.firstTask = false;
-        this.secondTask = true;
+        this.secondTask = true;        
+        this.cdRef.detectChanges();
     }
 
     public onSendSurveyClick() {
