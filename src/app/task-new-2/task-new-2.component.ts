@@ -20,6 +20,8 @@ export class TaskNew2Component {
     public showTask2: boolean = false;
     public showTask3: boolean = false;
 
+    public showThanks: boolean = false;
+
     public firstTask: boolean = true;
     public secondTask: boolean = false;
     public firstTaskNumber = "1";
@@ -116,6 +118,8 @@ export class TaskNew2Component {
         this.httpClient.post(`${this.baseAPI}/saveAnswers`, data).subscribe(
             x => {
                 this.toasterService.pop('success', "Ответы сохранены", "Спасибо за участие!");
+                this.showThanks = true;  
+                this.cdRef.detectChanges();
             },
             error => {
                 this.toasterService.pop('error', "Ошибка", "Не удалось сохранить результат");

@@ -51,7 +51,7 @@
     </div>
 </div>
 
-<div *ngIf="!showTasks" class="wrapper2">
+<div *ngIf="!showTasks && !showThanks" class="wrapper2">
     <h2>Финальный опрос</h2>
     <p>На сколько сложными для Вас были задания по шкале от 1 до 5, где 1 &ndash; очень легкие, 5 &ndash; очень сложные?</p>
 
@@ -67,4 +67,8 @@
         <button (click)="onSendSurveyClick()">Отправить</button>
     </div>
     
+</div>
+
+<div *ngIf="showThanks" class="wrapper2">
+    <h2>Спасибо за участие!</h2>
 </div>
